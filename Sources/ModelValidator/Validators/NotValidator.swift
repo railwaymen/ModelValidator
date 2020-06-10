@@ -1,5 +1,12 @@
 import Foundation
 
+/// Negates the validator following it.
+///
+/// Example:
+/// ```
+/// let validator: Validator<String> = !.empty // Validation will fail if the value is empty.
+/// ```
+///
 public prefix func ! <T>(_ validator: Validator<T>) -> Validator<T> {
     NotValidator(validator).validator()
 }
