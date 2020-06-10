@@ -1,0 +1,10 @@
+.DS_Store
+/.build
+/Packages
+/*.xcodeproj
+/*.xcworkspace
+/xcuserdata
+/output
+*.xcconfig
+/muter_logs
+*.lcov
