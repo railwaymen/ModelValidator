@@ -12,7 +12,7 @@ The preferred installation type is by using [Swift Package Manager](https://swif
 
 ### Example usage
 
-Below you can see the simplest validation for a model. If you're looking for a list of all available validators, enter the Documentation folder.
+Below you can see the simplest validation for a model. If you're looking for a list of all available validators, enter the [Documentation](Documentation/Reference) folder.
 
 ```swift
 import ModelValidator
