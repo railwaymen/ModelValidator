@@ -13,9 +13,9 @@ public protocol Validatable
 func validations(validations: inout Validations<Self>)
 ```
 
-> Declares all validations for the validatable model.
->
-> - Parameter validations: A structure which should be modified to add validations.
+Declares all validations for the validatable model.
+
+- Parameter validations: A structure which should be modified to add validations.
 
 #### Parameters
 

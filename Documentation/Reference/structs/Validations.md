@@ -13,9 +13,9 @@ public struct Validations<Model> where Model: Validatable
 public init(_ model: Model.Type = Model.self)
 ```
 
-> Creates a new Validations set for the given model type.
->
-> - Parameter model: A type of the validated model.
+Creates a new Validations set for the given model type.
+
+- Parameter model: A type of the validated model.
 
 #### Parameters
 
@@ -33,12 +33,12 @@ public mutating func add<T>(
 )
 ```
 
-> Adds a validation.
->
-> - Parameters:
->   - keyPath: A field to be validated.
->   - validator: A validator for the field.
->   - error: An error which is returned if validator has failed.
+Adds a validation.
+
+- Parameters:
+  - keyPath: A field to be validated.
+  - validator: A validator for the field.
+  - error: An error which is returned if validator has failed.
 
 #### Parameters
 
@@ -54,11 +54,11 @@ public mutating func add<T>(
 public func run(on model: Model) -> [Model.ValidationError]
 ```
 
-> Runs validations on given model.
->
-> - Parameter model: A model to be validated.
->
-> - Returns: An array of validation errors. If it's empty, model is valid.
+Runs validations on given model.
+
+- Parameter model: A model to be validated.
+
+- Returns: An array of validation errors. If it's empty, model is valid.
 
 #### Parameters
 

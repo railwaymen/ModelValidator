@@ -1,15 +1,17 @@
 import Foundation
 
-/// Connects two validators with AND.
-///
-/// Example:
-/// ```
-/// let validator: Validator<String> = .email && .count(...64)
-/// ```
-/// Checks if the validated value is a valid email and the string has no more than 64 characters.
-///
-public func && <T>(lhs: Validator<T>, rhs: Validator<T>) -> Validator<T> {
-    AndValidator(lhs, rhs).validator()
+extension Validator {
+    /// Connects two validators with AND.
+    ///
+    /// Example:
+    /// ```
+    /// let validator: Validator<String> = .email && .count(...64)
+    /// ```
+    /// Checks if the validated value is a valid email and the string has no more than 64 characters.
+    ///
+    public static func &&(lhs: Validator, rhs: Validator) -> Validator {
+        AndValidator(lhs, rhs).validator()
+    }
 }
 
 private struct AndValidator<T> {
