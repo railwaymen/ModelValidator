@@ -19,6 +19,15 @@ jobs:
       - name: SwiftLint
         uses: norio-nomura/action-swiftlint@3.1.0
 
+  lint_podspec:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Lint podspec
+        run: pod lib lint
+
   test:
     runs-on: macos-latest
 
