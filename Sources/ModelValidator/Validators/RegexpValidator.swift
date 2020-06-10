@@ -2,7 +2,7 @@ import Foundation
 
 extension Validator where T == String {
     
-    /// Checks if the at least part of the string fits the given regular expression.
+    /// Checks if at least part of the string fits the given regular expression.
     ///
     /// If you want to check if whole string fits the regexp, start it with `^` and end with `$`.
     ///

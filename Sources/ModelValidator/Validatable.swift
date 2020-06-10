@@ -22,7 +22,7 @@ extension Validatable {
     
     /// Validates the model.
     ///
-    /// - Throws: First occured `ValidationError`.
+    /// - Throws: First occurred `ValidationError`.
     public func validate() throws {
         guard let error = self.validationErrors().first else { return }
         throw error

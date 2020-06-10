@@ -6,7 +6,7 @@ public struct Validations<Model> where Model: Validatable {
     
     // MARK: - Initialization
     
-    /// Creates new Validations set for given model type.
+    /// Creates a new Validations set for the given model type.
     ///
     /// - Parameter model: A type of the validated model.
     public init(_ model: Model.Type = Model.self) {
