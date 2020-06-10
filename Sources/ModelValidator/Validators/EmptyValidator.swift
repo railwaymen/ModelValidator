@@ -1,6 +1,8 @@
 import Foundation
 
 extension Validator where T: Collection {
+    
+    /// Checks if the validated collection is empty.
     public static var empty: Validator<T> {
         EmptyValidator().validator()
     }

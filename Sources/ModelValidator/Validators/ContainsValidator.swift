@@ -1,6 +1,10 @@
 import Foundation
 
 extension Validator where T: Collection, T.Element: Equatable {
+    
+    /// Checks if the validated collection contains the given element.
+    ///
+    /// - Parameter element: An element which have to be in the validated collection.
     public static func contains(_ element: T.Element) -> Validator<T> {
         ContainsValidator(element).validator()
     }

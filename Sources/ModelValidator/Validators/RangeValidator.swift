@@ -1,22 +1,38 @@
 import Foundation
 
 extension Validator where T: Comparable {
+    
+    /// Checks if the validated value is in the given range
+    ///
+    /// - Parameter range: A range in which the value must be contained.
     public static func inRange(_ range: ClosedRange<T>) -> Validator<T> {
         RangeValidator(min: range.lowerBound, max: range.upperBound, isUpperBoundClosed: true).validator()
     }
     
+    /// Checks if the validated value is in the given range
+    ///
+    /// - Parameter range: A range in which the value must be contained.
     public static func inRange(_ range: Range<T>) -> Validator<T> {
         RangeValidator(min: range.lowerBound, max: range.upperBound, isUpperBoundClosed: false).validator()
     }
     
+    /// Checks if the validated value is in the given range
+    ///
+    /// - Parameter range: A range in which the value must be contained.
     public static func inRange(_ range: PartialRangeThrough<T>) -> Validator<T> {
         RangeValidator(min: nil, max: range.upperBound, isUpperBoundClosed: true).validator()
     }
     
+    /// Checks if the validated value is in the given range
+    ///
+    /// - Parameter range: A range in which the value must be contained.
     public static func inRange(_ range: PartialRangeUpTo<T>) -> Validator<T> {
         RangeValidator(min: nil, max: range.upperBound, isUpperBoundClosed: false).validator()
     }
     
+    /// Checks if the validated value is in the given range
+    ///
+    /// - Parameter range: A range in which the value must be contained.
     public static func inRange(_ range: PartialRangeFrom<T>) -> Validator<T> {
         RangeValidator(min: range.lowerBound, max: nil, isUpperBoundClosed: false).validator()
     }

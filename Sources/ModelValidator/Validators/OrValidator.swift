@@ -1,5 +1,13 @@
 import Foundation
 
+/// Connects two validators with OR.
+///
+/// Example:
+/// ```
+/// let validator: Validator<String> = .email || .url
+/// ```
+/// Checks if the validated value is a valid email address or a URL.
+///
 public func || <T>(lhs: Validator<T>, rhs: Validator<T>) -> Validator<T> {
     OrValidator(lhs, rhs).validator()
 }
