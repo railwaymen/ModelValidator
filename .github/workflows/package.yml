@@ -30,7 +30,7 @@ jobs:
       - name: Run tests
         run: swift test --enable-code-coverage
       - name: Generate code coverage report
-        run: xcrun llvm-cov export -format="lcov" .build/debug/RestlerPackageTests.xctest/Contents/MacOS/RestlerPackageTests
+        run: xcrun llvm-cov export -format="lcov" .build/debug/ModelValidatorPackageTests.xctest/Contents/MacOS/ModelValidatorPackageTests
           -instr-profile .build/debug/codecov/default.profdata
           --ignore-filename-regex="Test|Mock"
           > info.lcov
