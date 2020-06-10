@@ -1,6 +1,8 @@
 import Foundation
 
 extension Validator where T: OptionalType {
+    
+    /// Check if the validated field contains nil.
     public static var `nil`: Validator<T.WrappedType?> {
         NilValidator(T.WrappedType.self).validator()
     }
