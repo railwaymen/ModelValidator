@@ -1,6 +1,14 @@
 import Foundation
 
 extension Validator where T == String {
+    
+    /// Checks if the at least part of the string fits the given regular expression.
+    ///
+    /// If you want to check if whole string fits the regexp, start it with `^` and end with `$`.
+    ///
+    /// - Parameters:
+    ///   - regexp: A regular expression for validation.
+    ///   - caseInsensitive: A boolean value if regexp matching should be case insensitive.
     public static func regexp(_ regexp: String, caseInsensitive: Bool = false) -> Validator<T> {
         RegexpValidator(regexp, caseInsensitive: caseInsensitive).validator()
     }
