@@ -302,6 +302,7 @@ extension ValidatorsTests {
         XCTAssertThrowsError(try Validator<String>.ends(with: ["a", "b", "c"]).validate("c"))
         XCTAssertThrowsError(try Validator<String>.ends(with: "a", "b", "c").validate("abcd"))
         XCTAssertThrowsError(try Validator<String>.ends(with: "abc").validate("abcd"))
+        XCTAssertThrowsError(try Validator<String>.ends(with: "AbC").validate("dabc"))
         XCTAssertThrowsError(try Validator<String>.ends(with: Substring("abc")).validate("abcd"))
     }
     
@@ -310,6 +311,7 @@ extension ValidatorsTests {
         XCTAssertNoThrow(try Validator<String>.ends(with: ["a", "b", "c"]).validate("abc"))
         XCTAssertNoThrow(try Validator<String>.ends(with: "a", "b", "c").validate("dabc"))
         XCTAssertNoThrow(try Validator<String>.ends(with: "abc").validate("dabc"))
+        XCTAssertNoThrow(try Validator<String>.ends(with: "AbC", caseInsensitive: true).validate("dabc"))
         XCTAssertNoThrow(try Validator<String>.ends(with: Substring("abc")).validate("dabc"))
     }
 }

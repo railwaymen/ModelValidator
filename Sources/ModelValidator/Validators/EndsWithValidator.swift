@@ -20,15 +20,15 @@ extension Validator where T == String {
     /// Checks if the validated string ends with the given substring.
     ///
     /// - Parameter substring: A substring which should be at the end of the validated string.
-    public static func ends(with substring: Substring) -> Validator {
-        self.ends(with: substring.map { $0 })
+    public static func ends(with substring: Substring, caseInsensitive: Bool = false) -> Validator {
+        self.regexp("\(substring)$", caseInsensitive: caseInsensitive)
     }
     
     /// Checks if the validated string ends with the given substring.
     ///
     /// - Parameter substring: A substring which should be at the end of the validated string.
-    public static func ends(with substring: String) -> Validator {
-        self.ends(with: substring.map { $0 })
+    public static func ends(with substring: String, caseInsensitive: Bool = false) -> Validator {
+        self.regexp("\(substring)$", caseInsensitive: caseInsensitive)
     }
 }
 
