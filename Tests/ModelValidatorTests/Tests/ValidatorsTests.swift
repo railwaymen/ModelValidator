@@ -289,6 +289,7 @@ extension ValidatorsTests {
         XCTAssertNoThrow(try Validator<String>.starts(with: ["a", "b", "c"]).validate("abcdefg"))
         XCTAssertNoThrow(try Validator<String>.starts(with: "abc").validate("abcdefg"))
         XCTAssertNoThrow(try Validator<String>.starts(with: "abc").validate("abc"))
+        XCTAssertNoThrow(try Validator<String>.starts(with: "AbC", caseInsensitive: true).validate("abcd"))
         XCTAssertNoThrow(try Validator<String>.starts(with: "a").validate("abcdefg"))
         XCTAssertNoThrow(try Validator<String>.starts(with: Substring("abc")).validate("abcdefg"))
     }
