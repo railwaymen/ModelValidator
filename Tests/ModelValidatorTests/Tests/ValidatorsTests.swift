@@ -198,11 +198,24 @@ extension ValidatorsTests {
     func testContainsValidator_throwsError() {
         XCTAssertThrowsError(try Validator<String>.contains("y").validate("without the element"))
         XCTAssertThrowsError(try Validator<[String]>.contains("y").validate(["a", "b", "Y", "n"]))
+        
+        XCTAssertThrowsError(try Validator<String>.contains("a", "o", "g").validate("Anna has a dog."))
+        XCTAssertThrowsError(try Validator<String>.contains(["a", "o", "g"]).validate("Anna has a dog."))
+        XCTAssertThrowsError(try Validator<String>.contains(["g", "o", "d"]).validate("Anna has a dog."))
+        XCTAssertThrowsError(try Validator<String>.contains("god").validate("Anna has a dog."))
+        XCTAssertThrowsError(try Validator<String>.contains("dogo").validate("Anna has a dog."))
+        XCTAssertThrowsError(try Validator<String>.contains(Substring("god")).validate("Anna has a dog."))
     }
     
     func testContainsValidator_success() {
         XCTAssertNoThrow(try Validator<String>.contains("y").validate("with the y element"))
         XCTAssertNoThrow(try Validator<[String]>.contains("y").validate(["a", "b", "y", "n"]))
+        
+        XCTAssertNoThrow(try Validator<String>.contains("d", "o", "g").validate("Anna has a dog."))
+        XCTAssertNoThrow(try Validator<String>.contains(["d", "o", "g"]).validate("Anna has a dog."))
+        XCTAssertNoThrow(try Validator<String>.contains("dog").validate("Anna has a dog."))
+        XCTAssertNoThrow(try Validator<String>.contains(" a ").validate("Anna has a dog."))
+        XCTAssertNoThrow(try Validator<String>.contains(Substring("dog")).validate("Anna has a dog."))
     }
 }
 
