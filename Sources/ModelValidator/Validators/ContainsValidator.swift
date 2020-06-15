@@ -19,16 +19,20 @@ extension Validator where T: Collection, T.Element: Equatable {
 extension Validator where T == String {
     /// Checks if the validated string contains the given substring.
     ///
-    /// - Parameter substring: A substring which has to be in the validated string.
-    public static func contains(_ substring: Substring) -> Validator {
-        self.contains(substring.map { $0 })
+    /// - Parameters:
+    ///   - substring: A substring which has to be in the validated string.
+    ///   - caseInsensitive: A boolean value if regexp matching should be case insensitive.
+    public static func contains(_ substring: Substring, caseInsensitive: Bool = false) -> Validator {
+        self.regexp("\(substring)", caseInsensitive: caseInsensitive)
     }
     
     /// Checks if the validated string contains the given substring.
     ///
-    /// - Parameter substring: A substring which has to be in the validated string.
-    public static func contains(_ substring: String) -> Validator {
-        self.contains(substring.map { $0 })
+    /// - Parameters:
+    ///   - substring: A substring which has to be in the validated string.
+    ///   - caseInsensitive: A boolean value if regexp matching should be case insensitive.
+    public static func contains(_ substring: String, caseInsensitive: Bool = false) -> Validator {
+        self.regexp("\(substring)", caseInsensitive: caseInsensitive)
     }
 }
 
