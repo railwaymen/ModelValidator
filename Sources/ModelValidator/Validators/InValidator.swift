@@ -1,5 +1,25 @@
 import Foundation
 
+extension Validator where T == String {
+    /// Checks if the validated string is contained in the given array.
+    ///
+    /// - Parameters:
+    ///   - array: An array of permitted values.
+    ///   - caseInsensitive: A boolean value if regexp matching should be case insensitive.
+    public static func `in`(_ array: String..., caseInsensitive: Bool) -> Validator {
+        self.in(array, caseInsensitive: caseInsensitive)
+    }
+    
+    /// Checks if the validated string is contained in the given array.
+    ///
+    /// - Parameters:
+    ///   - array: An array of permitted values.
+    ///   - caseInsensitive: A boolean value if regexp matching should be case insensitive.
+    public static func `in`(_ array: [String], caseInsensitive: Bool) -> Validator {
+        self.regexp("^(\(array.joined(separator: "|")))$", caseInsensitive: caseInsensitive)
+    }
+}
+
 extension Validator where T: Equatable {
     
     /// Checks if the validated value is contained in the given array.
