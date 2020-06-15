@@ -258,6 +258,27 @@ extension ValidatorsTests {
     }
 }
 
+// MARK: - StartsWithValidator
+extension ValidatorsTests {
+    func testStartsWithValidator_throwsError() {
+        XCTAssertThrowsError(try Validator<String>.starts(with: "a", "b", "c").validate("labcd"))
+        XCTAssertThrowsError(try Validator<String>.starts(with: ["a", "b", "c"]).validate("labcd"))
+        XCTAssertThrowsError(try Validator<String>.starts(with: "abc").validate("labcd"))
+        XCTAssertThrowsError(try Validator<String>.starts(with: "abc").validate("a"))
+        XCTAssertThrowsError(try Validator<String>.starts(with: "A").validate("abcd"))
+        XCTAssertThrowsError(try Validator<String>.starts(with: Substring("abc")).validate("labcd"))
+    }
+    
+    func testStartsWithValidator_success() {
+        XCTAssertNoThrow(try Validator<String>.starts(with: "a", "b", "c").validate("abcdefg"))
+        XCTAssertNoThrow(try Validator<String>.starts(with: ["a", "b", "c"]).validate("abcdefg"))
+        XCTAssertNoThrow(try Validator<String>.starts(with: "abc").validate("abcdefg"))
+        XCTAssertNoThrow(try Validator<String>.starts(with: "abc").validate("abc"))
+        XCTAssertNoThrow(try Validator<String>.starts(with: "a").validate("abcdefg"))
+        XCTAssertNoThrow(try Validator<String>.starts(with: Substring("abc")).validate("abcdefg"))
+    }
+}
+
 // MARK: - EndsWithValidator
 extension ValidatorsTests {
     func testEndsWithValidator_throwsError() {
