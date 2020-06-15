@@ -257,3 +257,22 @@ extension ValidatorsTests {
         XCTAssertNoThrow(try Validator<String>.email.validate("simple+extension443@example.com"))
     }
 }
+
+// MARK: - EndsWithValidator
+extension ValidatorsTests {
+    func testEndsWithValidator_throwsError() {
+        XCTAssertThrowsError(try Validator<String>.ends(with: ["a", "b", "c"]).validate("abcd"))
+        XCTAssertThrowsError(try Validator<String>.ends(with: ["a", "b", "c"]).validate("c"))
+        XCTAssertThrowsError(try Validator<String>.ends(with: "a", "b", "c").validate("abcd"))
+        XCTAssertThrowsError(try Validator<String>.ends(with: "abc").validate("abcd"))
+        XCTAssertThrowsError(try Validator<String>.ends(with: Substring("abc")).validate("abcd"))
+    }
+    
+    func testEndsWithValidator_success() {
+        XCTAssertNoThrow(try Validator<String>.ends(with: ["a", "b", "c"]).validate("dabc"))
+        XCTAssertNoThrow(try Validator<String>.ends(with: ["a", "b", "c"]).validate("abc"))
+        XCTAssertNoThrow(try Validator<String>.ends(with: "a", "b", "c").validate("dabc"))
+        XCTAssertNoThrow(try Validator<String>.ends(with: "abc").validate("dabc"))
+        XCTAssertNoThrow(try Validator<String>.ends(with: Substring("abc")).validate("dabc"))
+    }
+}
