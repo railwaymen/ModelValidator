@@ -1,6 +1,5 @@
 import Foundation
 
-
 extension Validator {
     /// Connects two validators with OR.
     ///

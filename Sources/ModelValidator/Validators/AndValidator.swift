@@ -9,7 +9,7 @@ extension Validator {
     /// ```
     /// Checks if the validated value is a valid email and the string has no more than 64 characters.
     ///
-    public static func &&(lhs: Validator, rhs: Validator) -> Validator {
+    public static func && (lhs: Validator, rhs: Validator) -> Validator {
         AndValidator(lhs, rhs).validator()
     }
 }

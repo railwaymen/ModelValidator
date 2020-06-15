@@ -1,6 +1,5 @@
 import Foundation
 
-
 extension Validator {
     /// Connects two validators with OR and ignores nil value for one of the validators.
     ///
