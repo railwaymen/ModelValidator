@@ -8,11 +8,35 @@ The framework is created to be used when you want to receive custom errors on ea
 
 ### Installation
 
+#### Swift Package Manager
+
 The preferred installation type is by using [Swift Package Manager](https://swift.org/package-manager/).
+
+#### CocoaPods
+
+To install the framework by using CocoaPods:
+
+1. Add to Podfile:
+
+  ```ruby
+  pod 'ModelValidator'
+  ```
+
+2. Install pods
+
+  ```
+  pod install
+  ```
+
+### Usage
+
+- Full documentation of all references you can find in [Documentation](Documentation/Reference) folder
+- For a list of all available validators enter [Validator extension docs](Documentation/Reference/extensions/Validator.md).
+- For many more examples of usage and examples of passing and not passing rules enter [Tests](Tests/ModelValidatorTests/Tests) folder.
 
 ### Example usage
 
-Below you can see the simplest validation for a model. If you're looking for a list of all available validators, enter the [Documentation](Documentation/Reference) folder.
+Below you can see the simplest validation for a model.
 
 ```swift
 import ModelValidator
