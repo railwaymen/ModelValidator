@@ -9,7 +9,7 @@ extension Validator
 ### `&&(_:_:)`
 
 ```swift
-public static func &&(lhs: Validator, rhs: Validator) -> Validator
+public static func && (lhs: Validator, rhs: Validator) -> Validator
 ```
 
 Connects two validators with AND.
@@ -23,18 +23,72 @@ Checks if the validated value is a valid email and the string has no more than 6
 ### `contains(_:)`
 
 ```swift
-public static func contains(_ element: T.Element) -> Validator<T>
+public static func contains(_ sequence: T.Element...) -> Validator
 ```
 
-Checks if the validated collection contains the given element.
+Checks if the validated collection contains the given elements.
 
-- Parameter element: An element which have to be in the validated collection.
+- Parameter sequence: Elements which have to be in the validated collection in the given order.
 
 #### Parameters
 
 | Name | Description |
 | ---- | ----------- |
-| element | An element which have to be in the validated collection. |
+| sequence | Elements which have to be in the validated collection in the given order. |
+
+### `contains(_:)`
+
+```swift
+public static func contains(_ sequence: [T.Element]) -> Validator
+```
+
+Checks if the validated collection contains the given elements.
+
+- Parameter sequence: Elements which have to be in the validated collection in the given order.
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| sequence | Elements which have to be in the validated collection in the given order. |
+
+### `contains(_:caseInsensitive:)`
+
+```swift
+public static func contains(_ substring: Substring, caseInsensitive: Bool = false) -> Validator
+```
+
+Checks if the validated string contains the given substring.
+
+- Parameters:
+  - substring: A substring which has to be in the validated string.
+  - caseInsensitive: A boolean value if regexp matching should be case insensitive.
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| substring | A substring which has to be in the validated string. |
+| caseInsensitive | A boolean value if regexp matching should be case insensitive. |
+
+### `contains(_:caseInsensitive:)`
+
+```swift
+public static func contains(_ substring: String, caseInsensitive: Bool = false) -> Validator
+```
+
+Checks if the validated string contains the given substring.
+
+- Parameters:
+  - substring: A substring which has to be in the validated string.
+  - caseInsensitive: A boolean value if regexp matching should be case insensitive.
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| substring | A substring which has to be in the validated string. |
+| caseInsensitive | A boolean value if regexp matching should be case insensitive. |
 
 ### `count(_:)`
 
@@ -131,6 +185,108 @@ Checks if the count of the validated collection if equal to the given value.
 | Name | Description |
 | ---- | ----------- |
 | count | A required collections’ count. |
+
+### `ends(with:)`
+
+```swift
+public static func ends(with sequence: [T.Element]) -> Validator
+```
+
+Checks if the validated collection ends with the given sequence.
+
+- Parameter sequence: A sequence which should be at the end of the validated collection.
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| sequence | A sequence which should be at the end of the validated collection. |
+
+### `ends(with:)`
+
+```swift
+public static func ends(with sequence: T.Element...) -> Validator
+```
+
+Checks if the validated collection ends with the given sequence.
+
+- Parameter sequence: A sequence which should be at the end of the validated collection.
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| sequence | A sequence which should be at the end of the validated collection. |
+
+### `ends(with:caseInsensitive:)`
+
+```swift
+public static func ends(with substring: Substring, caseInsensitive: Bool = false) -> Validator
+```
+
+Checks if the validated string ends with the given substring.
+
+- Parameter substring: A substring which should be at the end of the validated string.
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| substring | A substring which should be at the end of the validated string. |
+
+### `ends(with:caseInsensitive:)`
+
+```swift
+public static func ends(with substring: String, caseInsensitive: Bool = false) -> Validator
+```
+
+Checks if the validated string ends with the given substring.
+
+- Parameter substring: A substring which should be at the end of the validated string.
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| substring | A substring which should be at the end of the validated string. |
+
+### `in(_:caseInsensitive:)`
+
+```swift
+public static func `in`(_ array: String..., caseInsensitive: Bool) -> Validator
+```
+
+Checks if the validated string is contained in the given array.
+
+- Parameters:
+  - array: An array of permitted values.
+  - caseInsensitive: A boolean value if regexp matching should be case insensitive.
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| array | An array of permitted values. |
+| caseInsensitive | A boolean value if regexp matching should be case insensitive. |
+
+### `in(_:caseInsensitive:)`
+
+```swift
+public static func `in`(_ array: [String], caseInsensitive: Bool) -> Validator
+```
+
+Checks if the validated string is contained in the given array.
+
+- Parameters:
+  - array: An array of permitted values.
+  - caseInsensitive: A boolean value if regexp matching should be case insensitive.
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| array | An array of permitted values. |
+| caseInsensitive | A boolean value if regexp matching should be case insensitive. |
 
 ### `in(_:)`
 
@@ -349,4 +505,74 @@ If you want to check if whole string fits the regexp, start it with `^` and end 
 | Name | Description |
 | ---- | ----------- |
 | regexp | A regular expression for validation. |
+| caseInsensitive | A boolean value if regexp matching should be case insensitive. |
+
+### `starts(with:)`
+
+```swift
+public static func starts(with sequence: T.Element...) -> Validator
+```
+
+Checks if the validated collection starts with the given sequence.
+
+- Parameter sequence: A sequence that has to be at the beginning of the validated collection.
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| sequence | A sequence that has to be at the beginning of the validated collection. |
+
+### `starts(with:)`
+
+```swift
+public static func starts(with sequence: [T.Element]) -> Validator
+```
+
+Checks if the validated collection starts with the given sequence.
+
+- Parameter sequence: A sequence that has to be at the beginning of the validated collection.
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| sequence | A sequence that has to be at the beginning of the validated collection. |
+
+### `starts(with:caseInsensitive:)`
+
+```swift
+public static func starts(with substring: Substring, caseInsensitive: Bool = false) -> Validator
+```
+
+Checks if the validated string starts with the given substring.
+
+- Parameters:
+  - substring: A substring that has to be at the beginning of the validated string.
+  - caseInsensitive: A boolean value if regexp matching should be case insensitive.
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| substring | A substring that has to be at the beginning of the validated string. |
+| caseInsensitive | A boolean value if regexp matching should be case insensitive. |
+
+### `starts(with:caseInsensitive:)`
+
+```swift
+public static func starts(with substring: String, caseInsensitive: Bool = false) -> Validator
+```
+
+Checks if the validated string starts with the given substring.
+
+- Parameters:
+  - substring: A substring that has to be at the beginning of the validated string.
+  - caseInsensitive: A boolean value if regexp matching should be case insensitive.
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| substring | A substring that has to be at the beginning of the validated string. |
 | caseInsensitive | A boolean value if regexp matching should be case insensitive. |
