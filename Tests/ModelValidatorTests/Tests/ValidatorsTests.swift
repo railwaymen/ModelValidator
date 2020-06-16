@@ -146,25 +146,28 @@ extension ValidatorsTests {
 // MARK: - InValidator
 extension ValidatorsTests {
     func testInValidator_throwsError() {
-        //Arrange
-        let sut: Validator<String> = .in("this", "that")
-        //Assert
-        XCTAssertThrowsError(try sut.validate(""))
-        XCTAssertThrowsError(try sut.validate(" "))
-        XCTAssertThrowsError(try sut.validate("not this"))
-        XCTAssertThrowsError(try sut.validate("and not that"))
+        XCTAssertThrowsError(try Validator<String>.in("this", "that").validate(""))
+        XCTAssertThrowsError(try Validator<String>.in("this", "that").validate(" "))
+        XCTAssertThrowsError(try Validator<String>.in("this", "that").validate("not this"))
+        XCTAssertThrowsError(try Validator<String>.in("this", "that").validate("and not that"))
         XCTAssertThrowsError(try Validator<String>.in(["this", "that"]).validate("in the array"))
         XCTAssertThrowsError(try Validator<String>.in(Set(["this", "that"])).validate("in the set"))
+        XCTAssertThrowsError(try Validator<String>.in("THIS", "that", caseInsensitive: false).validate("this"))
+        XCTAssertThrowsError(try Validator<String>.in("this", "that", caseInsensitive: true).validate("in the array"))
+        XCTAssertThrowsError(try Validator<String>.in(["THIS", "that"], caseInsensitive: false).validate("this"))
+        XCTAssertThrowsError(try Validator<String>.in(["this", "that"], caseInsensitive: false).validate("in the array"))
+        XCTAssertThrowsError(try Validator<String>.in(["this", "that"], caseInsensitive: true).validate("in the array"))
     }
     
     func testInValidator_success() {
-        //Arrange
-        let sut: Validator<String> = .in("this", "that")
-        //Assert
-        XCTAssertNoThrow(try sut.validate("this"))
-        XCTAssertNoThrow(try sut.validate("that"))
+        XCTAssertNoThrow(try Validator<String>.in("this", "that").validate("this"))
+        XCTAssertNoThrow(try Validator<String>.in("this", "that").validate("that"))
         XCTAssertNoThrow(try Validator<String>.in(["this", "that"]).validate("this"))
         XCTAssertNoThrow(try Validator<String>.in(Set(["this", "that"])).validate("this"))
+        XCTAssertNoThrow(try Validator<String>.in("THIS", "that", caseInsensitive: true).validate("this"))
+        XCTAssertNoThrow(try Validator<String>.in("this", "that", caseInsensitive: false).validate("this"))
+        XCTAssertNoThrow(try Validator<String>.in(["this", "that"], caseInsensitive: false).validate("this"))
+        XCTAssertNoThrow(try Validator<String>.in(["THIS", "that"], caseInsensitive: true).validate("this"))
     }
 }
 
