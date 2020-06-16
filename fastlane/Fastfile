@@ -1,0 +1,9 @@
+default_platform(:mac)
+
+platform :mac do
+
+  desc "Sets podspec version to the current tag version."
+  lane :set_podspec_version do |args|
+    version_bump_podspec(version_number: args[:version])
+  end
+end
