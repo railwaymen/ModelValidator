@@ -75,7 +75,7 @@ The package is released manually. To release register with a proper email accoun
 bundle exec pod trunk register $email
 ```
 
-Make sure that you are on commit ready for release and run release script with proper tag name:
+Make sure that you are on a commit ready for release and run release script with a proper tag name:
 
 ```
 Script/release.sh 1.0.0

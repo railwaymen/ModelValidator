@@ -9,6 +9,7 @@ main() {
   check_tag_existence
   confirm "Are you sure you want to release this version? (y/n)"
   confirm "All uncommitted changes will be discarded. Do you want to continue? (y/n)"
+  echo "Releasing new version"
 
   push_tag
   push_pod
@@ -43,9 +44,8 @@ confirm() {
   read -p "$1 " input
   if [[ $input = "y" || $input = "yes" || $input = "Y" || $input = "YES" ]]
   then
-    echo "Releasing new version"
+    return 0
   else
-    echo "Aborted release"
     stop_script
   fi
 }
@@ -66,6 +66,7 @@ get_remote() {
 }
 
 stop_script() {
+  echo "Release aborted"
   kill -s TERM $TOP_PID
 }
 
