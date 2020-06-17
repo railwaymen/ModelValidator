@@ -66,3 +66,17 @@ If you have some idea for a new feature, create an issue or add a pull request.
 We don't use Linux for Swift, so if you have a proposition to run it on Linux, please create a pull request with the needed changes.
 
 The framework has no dependencies. Only things you should have is Swift compiler and [SwiftLint](https://github.com/realm/SwiftLint) on your machine.
+
+## Release
+
+The package is released manually. To release register with a proper email account to pod trunk:
+
+```
+bundle exec pod trunk register $email
+```
+
+Make sure that you are on a commit ready for release and run release script with a proper tag name:
+
+```
+Script/release.sh 1.0.0
+```
