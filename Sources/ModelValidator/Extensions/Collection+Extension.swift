@@ -13,7 +13,7 @@ extension Collection where Element: Equatable {
     ///
     /// Code from: https://forums.swift.org/t/count-of-and-contains-other-for-collection/11245
     @inlinable
-    public func contains<T: Collection>(_ other: T) -> Bool where T.Element == Element {
+    func contains<T: Collection>(_ other: T) -> Bool where T.Element == Element {
         guard other.startIndex != other.endIndex else { return true }
         
         var currentMainSelfIndex = self.startIndex
